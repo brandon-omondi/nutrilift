@@ -1,5 +1,6 @@
 "use client";
 
+import chickenImage from "./chicken.jpeg";
 import {
   BarChart3Icon,
   ChevronDownIcon,
@@ -23,7 +24,7 @@ import { Separator } from "@/components/ui/separator";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 export function MealPlanSection() {
-  // Data for the next meal
+  // Data for the next meal – using imported chickenImage 
   const nextMeal = {
     title: "Grilled Turkey Breast with Steamed Asparagus and Brown Rice",
     type: "Lunch",
@@ -32,10 +33,10 @@ export function MealPlanSection() {
     healthScore: "85/100",
     cookDuration: "10 minutes",
     totalSteps: "4 steps",
-    image: "/place-image-here.png",
+    image: chickenImage,
   };
 
-  // Data for menu items
+  // Data for menu items – each menu item now uses chickenImage
   const menuItems = [
     {
       title: "Avocado Toast with Poached Egg",
@@ -45,7 +46,7 @@ export function MealPlanSection() {
       carbs: "30g carbs",
       protein: "14g protein",
       fats: "18g fats",
-      image: "/place-image-here-1.png",
+      image: chickenImage,
     },
     {
       title: "Grilled Shrimp Tacos with Mango Salsa",
@@ -55,7 +56,7 @@ export function MealPlanSection() {
       carbs: "45g carbs",
       protein: "28g protein",
       fats: "12g fats",
-      image: "/place-image-here-2.png",
+      image: chickenImage,
     },
     {
       title: "Baked Chicken Breast with Quinoa and Kale",
@@ -65,7 +66,7 @@ export function MealPlanSection() {
       carbs: "50g carbs",
       protein: "40g protein",
       fats: "15g fats",
-      image: "/place-image-here-3.png",
+      image: chickenImage,
     },
   ];
 
@@ -132,7 +133,7 @@ export function MealPlanSection() {
                 <img
                   className="w-full h-full object-cover"
                   alt="Grilled Turkey Breast meal"
-                  src={nextMeal.image}
+                  src={nextMeal.image.src}
                 />
               </div>
 
@@ -159,28 +160,6 @@ export function MealPlanSection() {
                   <div className="flex items-center gap-2.5 flex-1 min-w-[150px]">
                     <div className="inline-flex items-center p-2 bg-gray-100 rounded-lg">
                       <BarChart3Icon className="w-4 h-4 text-gray-400" />
-                    </div>
-                    <div className="flex flex-col items-start">
-                      <span className="text-xs text-gray-400 whitespace-nowrap">
-                        Difficulty
-                      </span>
-                      <span className="font-title-14px-semibold text-gray-400 whitespace-nowrap">
-                        {nextMeal.difficulty}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-2.5 flex-1 min-w-[150px]">
-                    <div className="inline-flex items-center p-2 bg-gray-100 rounded-lg">
-                      <HeartIcon className="w-4 h-4 text-gray-400" />
-                    </div>
-                    <div className="flex flex-col items-start">
-                      <span className="text-xs text-gray-400 whitespace-nowrap">
-                        Health Score
-                      </span>
-                      <span className="font-title-14px-semibold text-gray-400 whitespace-nowrap">
-                        {nextMeal.healthScore}
-                      </span>
                     </div>
                   </div>
                 </div>
@@ -251,7 +230,7 @@ export function MealPlanSection() {
                   <img
                     className="w-full h-full object-cover"
                     alt={item.title}
-                    src={item.image}
+                    src={item.image.src}
                   />
                 </div>
 

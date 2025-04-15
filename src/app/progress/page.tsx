@@ -30,8 +30,11 @@ import {
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
-// Import the NavigationBarSection for the desktop sidebar
+// Import the sidebar component
 import { NavigationBarSection } from "@/components/sections/NavigationBarSection";
+// Import the local body image from the same folder (adjust the relative path as needed)
+import body from "./body.png";
+import { StaticImageData } from "next/image";
 
 export const ElementProgressDesktop = (): JSX.Element => {
   const router = useRouter();
@@ -57,20 +60,15 @@ export const ElementProgressDesktop = (): JSX.Element => {
     { month: "Sep", weight: 78 },
   ];
 
-  // Progress photos data
-  const progressPhotos = [
-    { date: "July 2028", weight: 82, image: "/place-image-here-1.png" },
-    { date: "Sept 2028", weight: 82, image: "/place-image-here-2.png" },
-    { date: "July 2028", weight: 82, image: "/place-image-here-3.png" },
-    { date: "Aug 2028", weight: 81, image: "/place-image-here-1.png" },
-    { date: "Oct 2028", weight: 80, image: "/place-image-here-2.png" },
-    { date: "Nov 2028", weight: 79, image: "/place-image-here-3.png" },
-    { date: "Dec 2028", weight: 78, image: "/place-image-here-1.png" },
-    { date: "Jan 2029", weight: 77, image: "/place-image-here-2.png" },
-    { date: "Feb 2029", weight: 76, image: "/place-image-here-3.png" },
-    { date: "Mar 2029", weight: 75, image: "/place-image-here-1.png" },
-    { date: "Apr 2029", weight: 74, image: "/place-image-here-2.png" },
-    { date: "May 2029", weight: 73, image: "/place-image-here-3.png" },
+  // Progress photos data – all images now set to the imported body
+  // Dates are between November 2024 and April 2025.
+  const progressPhotos: { date: string; weight: number; image: string | StaticImageData }[] = [
+    { date: "Nov 2024", weight: 82, image: body },
+    { date: "Dec 2024", weight: 82, image: body },
+    { date: "Jan 2025", weight: 82, image: body },
+    { date: "Feb 2025", weight: 81, image: body },
+    { date: "Mar 2025", weight: 80, image: body },
+    { date: "Apr 2025", weight: 79, image: body },
   ];
 
   // Footer links
@@ -246,7 +244,7 @@ export const ElementProgressDesktop = (): JSX.Element => {
                               </div>
                             </div>
                             <div className="relative w-full aspect-square bg-white">
-                              <img className="w-full h-full object-cover" alt="Progress photo" src={photo.image} />
+                              <img className="w-full h-full object-cover" alt="Progress photo" src={typeof photo.image === "string" ? photo.image : photo.image.src} />
                             </div>
                           </CardContent>
                         </Card>
@@ -288,7 +286,7 @@ export const ElementProgressDesktop = (): JSX.Element => {
                           </div>
                         </div>
                         <div className="relative w-full aspect-square bg-white">
-                          <img className="w-full h-full object-cover" alt="Progress photo" src={photo.image} />
+                          <img className="w-full h-full object-cover" alt="Progress photo" src={typeof photo.image === "string" ? photo.image : photo.image.src} />
                         </div>
                       </CardContent>
                     </Card>
